@@ -1,14 +1,16 @@
-# Example file showing a circle moving on screen
+# Example file showing a circle moving on display_surface
 import pygame
 
 # pygame setup
 pygame.init()
-screen = pygame.display.set_mode((1280, 720))
+display_surface = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 dt = 0
 
-player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+player_pos = pygame.Vector2(
+    display_surface.get_width() / 2, display_surface.get_height() / 2
+)
 
 while running:
     # poll for events
@@ -17,10 +19,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
+    # fill the display_surface with a color to wipe away anything from last frame
+    display_surface.fill("purple")
 
-    pygame.draw.circle(screen, "red", player_pos, 40)
+    pygame.draw.circle(display_surface, "red", player_pos, 40)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
@@ -32,7 +34,7 @@ while running:
     if keys[pygame.K_d]:
         player_pos.x += 300 * dt
 
-    # flip() the display to put your work on screen
+    # flip() the display to put your work on display_surface
     pygame.display.flip()
 
     # limits FPS to 60
