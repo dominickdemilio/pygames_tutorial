@@ -20,6 +20,8 @@ while running:
     # draw the game
     display_surface.fill("darkgray")
     display_surface.blit(surf, (100, 150))
+
+    # update the display
     pygame.display.update()
 
 pygame.quit()

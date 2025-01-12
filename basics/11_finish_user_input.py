@@ -47,6 +47,7 @@ while running:
 
     spaceship_direction.x = int(keys[pygame.K_d]) - int(keys[pygame.K_a])
     spaceship_direction.y = int(keys[pygame.K_s]) - int(keys[pygame.K_w])
+
     spaceship_direction = (
         spaceship_direction.normalize()
         if spaceship_direction.length() > 0
@@ -72,7 +73,9 @@ while running:
     display_surface.blit(laser_surf, laser_rect)
 
     # move the spaceship
-    spaceship_rect.center += spaceship_direction * spaceship_speed * dt
+    spaceship_rect.center = (
+        spaceship_rect.center + spaceship_direction * spaceship_speed * dt
+    )
 
     # draw the spaceship
     display_surface.blit(spaceship_surf, spaceship_rect)
